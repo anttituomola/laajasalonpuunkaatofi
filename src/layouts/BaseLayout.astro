@@ -17,8 +17,12 @@ const url = canonicalURL || Astro.url.pathname;
 const fullURL = new URL(url, siteURL).toString();
 const defaultKeywords = 'puunkaato, puunkaatopalvelu, puunkaato Laajasalo, puunkaato Helsinki, puunkaato Uusimaa, pihapuiden kaato, hoitoleikkaus, puunhoito, kantojyrsintä, arboristi Helsinki, arboristi Laajasalo, puunkaato saaristossa, vaativa puunkaato, turvallinen puunkaato, tree removal Helsinki, arborist Helsinki';
 const metaKeywords = keywords || defaultKeywords;
-const defaultOgImage = `${siteURL}/images/ville-kulmala.jpg`;
-const metaOgImage = ogImage || defaultOgImage;
+// Use landscape image for better WhatsApp compatibility (recommended: 1200×630px, aspect ratio 1.91:1)
+const defaultOgImage = `${siteURL}/images/ville-kulmala_og.jpg`;
+// Ensure OG image URL is always absolute
+const metaOgImage = ogImage 
+  ? (ogImage.startsWith('http') ? ogImage : new URL(ogImage.startsWith('/') ? ogImage : `/${ogImage}`, siteURL).toString())
+  : defaultOgImage;
 
 // Default structured data
 const defaultStructuredData = {
@@ -151,8 +155,10 @@ const finalStructuredData = structuredData || defaultStructuredData;
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={metaOgImage} />
-    <meta property="og:image:width" content="600" />
-    <meta property="og:image:height" content="800" />
+    <meta property="og:image:secure_url" content={metaOgImage} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Ville Kulmala - Ammattitaitoinen arboristi ja puunkaatopalvelun yrittäjä Helsingissä ja Laajasalossa" />
     <meta property="og:locale" content="fi_FI" />
     <meta property="og:site_name" content="Laajasalon Puunkaatopalvelu" />

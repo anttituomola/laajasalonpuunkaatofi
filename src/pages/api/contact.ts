@@ -5,10 +5,12 @@ import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 export const prerender = false;
 
 // Initialize SES client only if AWS credentials are provided
+// Using process.env instead of import.meta.env to prevent build-time inlining
 const getSESClient = () => {
-  const region = import.meta.env.AWS_SDK_REGION;
-  const accessKeyId = import.meta.env.AWS_SDK_ACCESS_KEY_ID;
-  const secretAccessKey = import.meta.env.AWS_SDK_SECRET_ACCESS_KEY;
+  // Use process.env for runtime environment variables (not inlined at build time)
+  const region = process.env.AWS_SDK_REGION;
+  const accessKeyId = process.env.AWS_SDK_ACCESS_KEY_ID;
+  const secretAccessKey = process.env.AWS_SDK_SECRET_ACCESS_KEY;
 
   if (!region || !accessKeyId || !secretAccessKey) {
     return null;
@@ -78,7 +80,8 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    const adminEmail = import.meta.env.ADMIN_EMAIL || 'anttituomola8@gmail.com';
+    // Use process.env to prevent build-time inlining of secrets
+    const adminEmail = process.env.ADMIN_EMAIL || 'anttituomola8@gmail.com';
     const sesClient = getSESClient();
 
     if (!sesClient) {

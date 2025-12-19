@@ -1,0 +1,342 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import ContactForm from '../components/ContactForm.astro';
+import ContactInfo from '../components/ContactInfo.astro';
+---
+
+<BaseLayout
+  title="Etusivu"
+  description="Laajasalon Puunkaatopalvelu - Puunkaatopalvelut Uudellamaalla. Erikoistumme vaativiin pihapuiden kaatoihin, hoitoleikkuisiin sekä puunkaatoon saaristossa."
+>
+  <Header />
+  
+  <Hero 
+    title="Laajasalon Puunkaatopalvelu"
+    subtitle="Puunkaatopalvelut Uudellamaalla"
+  />
+
+  <main>
+    <!-- Services Section -->
+    <section class="services-section">
+      <div class="container">
+        <h2>Palvelumme</h2>
+        <p class="section-description">
+          Voit olla varma, suoritamme työmme aina tehokkaasti ja turvallisesti. Erikoistumme vaativiin pihapuiden kaatoihin, hoitoleikkuisiin sekä puunkaatoon saaristossa.
+        </p>
+        <div class="services-grid">
+          <ServiceCard
+            title="Pihapuiden kaadot"
+            image="/images/pihapuiden-kaadot.jpg"
+            imageAlt="Pihapuiden kaadot"
+          />
+          <ServiceCard
+            title="Puiden hoitoleikkaukset"
+            image="/images/puiden-hoitoleikkaukset.jpg"
+            imageAlt="Puiden hoitoleikkaukset"
+          />
+          <ServiceCard
+            title="Puunkaadot saaristossa"
+            image="/images/puunkaadot-saaristossa.jpg"
+            imageAlt="Puunkaadot saaristossa"
+          />
+          <ServiceCard
+            title="Kantojyrsintä"
+            image="/images/kantojyrsinta.jpg"
+            imageAlt="Kantojyrsintä"
+          />
+        </div>
+        <div class="services-cta">
+          <a href="/palvelut" class="btn btn-primary">Tutustu palveluihimme</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tax Deduction Section -->
+    <section class="tax-section">
+      <div class="container">
+        <h2>Muista kotitalousvähennys</h2>
+        <p>
+          Puunkaato piha-alueella ja muut pihatyöt kuuluvat kotitalousvähennyksen piiriin. Lue lisää kotitalousvähennyksestä vero.fi verkkosivuilta.
+        </p>
+        <a href="https://www.vero.fi/henkiloasiakkaat/verokortti-ja-veroilmoitus/vahennykset/kotitalousvahennys/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Lue lisää</a>
+      </div>
+    </section>
+
+    <!-- Free Consultation CTA -->
+    <section class="cta-section">
+      <div class="container">
+        <h2>Varaa ilmainen kartoitus!</h2>
+        <p>
+          Haluatko varmistaa, että puunkaatoprojektisi sujuu suunnitellusti ja turvallisesti? Varaa ilmainen kartoitus meiltä.
+        </p>
+        <a href="/ota-yhteytta" class="btn btn-primary">Varaa kartoitus</a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+      <div class="container">
+        <div class="about-content">
+          <div class="about-text">
+            <h2>Meistä</h2>
+            <p>
+              Olemme erikoistuneet vaativampiin pihapuiden kaatoihin, hoitoleikkuisiin sekä puunkaatoon saaristossa. Tarjoamme ammattitaitoista ja luotettavaa palvelua koko Uudenmaan alueella.
+            </p>
+            <p>
+              Olipa kyseessä sitten vaikeasti saavutettavissa oleva piha-alue tai saariston puut, voit olla varma, että suoritamme työmme aina tehokkaasti ja turvallisesti.
+            </p>
+            <a href="/ota-yhteytta" class="btn btn-primary">Ota yhteyttä</a>
+          </div>
+          <div class="about-image">
+            <img 
+              src="/images/ville-kulmala.jpg" 
+              alt="Ville Kulmala" 
+              loading="lazy" 
+              decoding="async"
+              width="600"
+              height="800"
+            />
+            <div class="image-caption">
+              <p class="caption-label">Yrittäjä</p>
+              <p class="caption-name">Ville Kulmala</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-wrapper">
+          <ContactInfo />
+          <ContactForm />
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  main {
+    min-height: 50vh;
+  }
+
+  /* Services Section */
+  .services-section {
+    padding: 5rem 0;
+    background: white;
+  }
+
+  .services-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .services-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #2d5016;
+  }
+
+  .section-description {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.8;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .services-cta {
+    text-align: center;
+  }
+
+  /* Tax Section */
+  .tax-section {
+    padding: 4rem 0;
+    background: #f5f5f5;
+    text-align: center;
+  }
+
+  .tax-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  .tax-section p {
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.8;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    padding: 5rem 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url('/images/cta-bg.jpg') center/cover;
+    color: white;
+    text-align: center;
+  }
+
+  .cta-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta-section p {
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    font-size: 1.2rem;
+    line-height: 1.8;
+  }
+
+  /* About Section */
+  .about-section {
+    padding: 5rem 0;
+    background: white;
+  }
+
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .about-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+
+  .about-text p {
+    margin-bottom: 1.5rem;
+    color: #666;
+    line-height: 1.8;
+    font-size: 1.1rem;
+  }
+
+  .about-image {
+    position: relative;
+  }
+
+  .about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .image-caption {
+    margin-top: 1rem;
+  }
+
+  .caption-label {
+    font-weight: 600;
+    color: #666;
+    margin-bottom: 0.25rem;
+  }
+
+  .caption-name {
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: 600;
+  }
+
+  /* Contact Section */
+  .contact-section {
+    padding: 5rem 0;
+    background: #f5f5f5;
+  }
+
+  .contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: transform 0.3s, opacity 0.3s;
+    text-align: center;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+  }
+
+  .btn-primary {
+    background: #2d5016;
+    color: white;
+  }
+
+  .btn-secondary {
+    background: white;
+    color: #2d5016;
+    border: 2px solid #2d5016;
+  }
+
+  @media (max-width: 968px) {
+    .about-content,
+    .contact-wrapper {
+      grid-template-columns: 1fr;
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+  }
+
+  @media (max-width: 768px) {
+    .services-section h2,
+    .cta-section h2,
+    .about-text h2 {
+      font-size: 2rem;
+    }
+
+    .section-description,
+    .tax-section p,
+    .cta-section p {
+      font-size: 1rem;
+    }
+  }
+</style>
+

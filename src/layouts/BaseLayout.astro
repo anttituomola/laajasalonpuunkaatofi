@@ -1,0 +1,110 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  canonicalURL?: string;
+}
+
+const { title, description, canonicalURL } = Astro.props;
+const siteURL = Astro.site || 'https://laajasalonpuunkaato.fi';
+const fullTitle = title === 'Etusivu' ? 'Laajasalon Puunkaatopalvelu - Puunkaatopalvelut Uudellamaalla' : `${title} | Laajasalon Puunkaatopalvelu`;
+const url = canonicalURL || Astro.url.pathname;
+const fullURL = new URL(url, siteURL).toString();
+---
+
+<!doctype html>
+<html lang="fi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Performance: Preload critical resources -->
+    {Astro.url.pathname === '/' && (
+      <>
+        <link rel="preload" href="/images/hero-bg.jpg" as="image" fetchpriority="high" />
+        <link rel="preload" href="/images/pihapuiden-kaadot.jpg" as="image" />
+      </>
+    )}
+    
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="https://www.facebook.com" />
+    <link rel="dns-prefetch" href="https://www.instagram.com" />
+    
+    <!-- SEO Meta Tags -->
+    <title>{fullTitle}</title>
+    <link rel="canonical" href={fullURL} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={fullURL} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="fi_FI" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={fullURL} />
+    <meta property="twitter:title" content={fullTitle} />
+    <meta property="twitter:description" content={description} />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Laajasalon Puunkaatopalvelu",
+      "image": `${siteURL}/images/logo.png`,
+      "description": "Puunkaatopalvelut Uudellamaalla. Erikoistumme vaativiin pihapuiden kaatoihin, hoitoleikkuisiin sekä puunkaatoon saaristossa.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Reiherintie 1 K 126",
+        "addressLocality": "Helsinki",
+        "postalCode": "00870",
+        "addressCountry": "FI"
+      },
+      "telephone": "+358505148294",
+      "email": "ville@laajasalonpuunkaato.fi",
+      "url": siteURL,
+      "priceRange": "$$",
+      "areaServed": {
+        "@type": "State",
+        "name": "Uusimaa"
+      }
+    })} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+  }
+
+  body {
+    color: #333;
+    background-color: #fff;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button {
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+  }
+</style>
+

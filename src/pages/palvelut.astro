@@ -1,0 +1,295 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import ContactForm from '../components/ContactForm.astro';
+import ContactInfo from '../components/ContactInfo.astro';
+---
+
+<BaseLayout
+  title="Palvelut"
+  description="Laajasalon Puunkaatopalvelu tarjoaa pihapuiden kaatoja, hoitoleikkauksia, saaristopuunkaatoja ja kantojyrsintää. Ammattitaitoista palvelua koko Uudenmaan alueella."
+>
+  <Header />
+  
+  <Hero 
+    title="Palvelumme"
+    showButtons={false}
+  />
+
+  <main>
+    <!-- Service 1: Pihapuiden kaadot -->
+    <section class="service-detail">
+      <div class="container">
+        <div class="service-content">
+          <div class="service-image">
+            <img 
+              src="/images/pihapuiden-kaadot.jpg" 
+              alt="Pihapuiden kaadot" 
+              loading="lazy" 
+              decoding="async"
+              width="800"
+              height="600"
+            />
+          </div>
+          <div class="service-text">
+            <h2>Pihapuiden kaadot</h2>
+            <p>
+              Tarjoamme räätälöityjä ratkaisuja pihapuiden kaatotöihin. Kaatotyöt suunnitellaan aina suunnitellaan huolellisesti tapauskohtaisesti. Otamme huomioon sekä käytettävissä oleva tila että puun koon. Ahtaissa paikoissa kaato suoritetaan vaiheittain: ensin karsimme puun pystyyn ja sitten suoritamme kaadon osissa. Jos tila on erittäin rajallinen, köyden varassa laskeutuvat oksat varmistavat, etteivät lähistöllä olevat rakennukset tai istutukset vahingoitu.
+            </p>
+            <a href="/ota-yhteytta" class="btn btn-primary">Ota yhteyttä</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service 2: Puiden hoitoleikkaukset -->
+    <section class="service-detail service-alt">
+      <div class="container">
+        <div class="service-content service-reverse">
+          <div class="service-image">
+            <img 
+              src="/images/puiden-hoitoleikkaukset.jpg" 
+              alt="Puiden hoitoleikkaukset" 
+              loading="lazy" 
+              decoding="async"
+              width="800"
+              height="600"
+            />
+          </div>
+          <div class="service-text">
+            <h2>Puiden hoitoleikkaukset</h2>
+            <p>
+              Huolehdimme puiden kasvun ja terveyden ylläpitämiseen tarvittavat toimenpiteet. Se käsittää erilaisia leikkauksia, joiden avulla voidaan vaikuttaa puun rakenteeseen, kasvusuuntaan, oksistoon ja yleiseen kuntoon. Hoitoleikkauksen tavoitteena on edistää puun terveyttä, estää haitallisia kasvutapoja, poistaa kuolleita tai vaurioituneita oksia sekä parantaa puun ulkonäköä ja turvallisuutta. Hoitoleikkauksella pyritään myös säilyttämään puun sopiva koko ja muoto sekä edistämään sen pitkäikäisyyttä.
+            </p>
+            <a href="/ota-yhteytta" class="btn btn-primary">Ota yhteyttä</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service 3: Puunkaadot saaristossa -->
+    <section class="service-detail">
+      <div class="container">
+        <div class="service-content">
+          <div class="service-image">
+            <img 
+              src="/images/puunkaadot-saaristossa.jpg" 
+              alt="Puunkaadot saaristossa" 
+              loading="lazy" 
+              decoding="async"
+              width="800"
+              height="600"
+            />
+          </div>
+          <div class="service-text">
+            <h2>Puunkaadot saaristossa</h2>
+            <p>
+              Laajasalon puunkaatopalvelu sijaitsee merellisessä Laajasalossa. Tämä sijainti mahdollistaa nopean ja kätevän pääsyn Helsingin saaristoon omalla kalustollamme. Olipa tarve puunkaadolle tai puunhoitoleikkauksille missä tahansa saariston kohteessa, voit luottaa siihen, että saavumme paikalle ripeästi ja valmiina tarjoamaan asiantuntevaa palvelua.
+            </p>
+            <a href="/ota-yhteytta" class="btn btn-primary">Ota yhteyttä</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service 4: Kantojyrsintä -->
+    <section class="service-detail service-alt">
+      <div class="container">
+        <div class="service-content service-reverse">
+          <div class="service-image">
+            <img 
+              src="/images/kantojyrsinta.jpg" 
+              alt="Kantojyrsintä" 
+              loading="lazy" 
+              decoding="async"
+              width="800"
+              height="600"
+            />
+          </div>
+          <div class="service-text">
+            <h2>Kantojyrsintä</h2>
+            <p>
+              Kantojyrsintä poistaa häiritsevät kannot vaivattomasti. Turvallisella ja tehokkaalla menetelmällämme emme aiheuta häiriötä pihan rakenteille tai kasvillisuudelle. Huolehdimme siitä, että pihaanne jää siisti jälki kantojen poiston jälkeen.
+            </p>
+            <a href="/ota-yhteytta" class="btn btn-primary">Ota yhteyttä</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tax Deduction Section -->
+    <section class="tax-section">
+      <div class="container">
+        <h2>Muista kotitalousvähennys</h2>
+        <p>
+          Puunkaato piha-alueella ja muut pihatyöt kuuluvat kotitalousvähennyksen piiriin. Lue lisää kotitalousvähennyksestä vero.fi verkkosivuilta.
+        </p>
+        <a href="https://www.vero.fi/henkiloasiakkaat/verokortti-ja-veroilmoitus/vahennykset/kotitalousvahennys/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Lue lisää</a>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-wrapper">
+          <ContactInfo />
+          <ContactForm />
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  main {
+    min-height: 50vh;
+  }
+
+  /* Service Detail Sections */
+  .service-detail {
+    padding: 5rem 0;
+  }
+
+  .service-detail.service-alt {
+    background: #f5f5f5;
+  }
+
+  .service-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .service-content.service-reverse {
+    direction: rtl;
+  }
+
+  .service-content.service-reverse > * {
+    direction: ltr;
+  }
+
+  .service-image {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .service-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+
+  .service-text p {
+    margin-bottom: 2rem;
+    color: #666;
+    line-height: 1.8;
+    font-size: 1.1rem;
+  }
+
+  /* Tax Section */
+  .tax-section {
+    padding: 4rem 0;
+    background: white;
+    text-align: center;
+  }
+
+  .tax-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  .tax-section p {
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.8;
+  }
+
+  /* Contact Section */
+  .contact-section {
+    padding: 5rem 0;
+    background: #f5f5f5;
+  }
+
+  .contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: transform 0.3s, opacity 0.3s;
+    text-align: center;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+  }
+
+  .btn-primary {
+    background: #2d5016;
+    color: white;
+  }
+
+  .btn-secondary {
+    background: white;
+    color: #2d5016;
+    border: 2px solid #2d5016;
+  }
+
+  @media (max-width: 968px) {
+    .service-content,
+    .contact-wrapper {
+      grid-template-columns: 1fr;
+    }
+
+    .service-content.service-reverse {
+      direction: ltr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .service-text h2 {
+      font-size: 2rem;
+    }
+
+    .service-text p,
+    .tax-section p {
+      font-size: 1rem;
+    }
+
+    .service-image {
+      height: 300px;
+    }
+  }
+</style>
+

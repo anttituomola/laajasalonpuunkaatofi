@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import ContactForm from '../components/ContactForm.astro';
+import ContactInfo from '../components/ContactInfo.astro';
+---
+
+<BaseLayout
+  title="Ota yhteyttä"
+  description="Ota yhteyttä Laajasalon Puunkaatopalveluun. Varaa ilmainen kartoitus tai kysy lisätietoja puunkaatopalveluistamme. Puhelin: +358 50 514 8294, Sähköposti: ville@laajasalonpuunkaato.fi"
+>
+  <Header />
+  
+  <Hero 
+    title="Ota yhteyttä"
+    showButtons={false}
+  />
+
+  <main>
+    <section class="contact-page-section">
+      <div class="container">
+        <div class="contact-wrapper">
+          <ContactInfo />
+          <ContactForm />
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  main {
+    min-height: 50vh;
+  }
+
+  .contact-page-section {
+    padding: 5rem 0;
+    background: white;
+  }
+
+  .contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  @media (max-width: 968px) {
+    .contact-wrapper {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+

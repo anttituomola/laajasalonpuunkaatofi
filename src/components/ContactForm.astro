@@ -1,0 +1,323 @@
+---
+---
+
+<form class="contact-form" method="POST" action="/api/contact" id="contact-form" novalidate>
+  <div class="form-group">
+    <label for="name">Nimi <span class="required">*</span></label>
+    <input type="text" id="name" name="name" required />
+    <span class="error-message" id="name-error"></span>
+  </div>
+  
+  <div class="form-group">
+    <label for="phone">Puhelinnumero <span class="required">*</span></label>
+    <input type="tel" id="phone" name="phone" required />
+    <span class="error-message" id="phone-error"></span>
+  </div>
+  
+  <div class="form-group">
+    <label for="email">Sähköposti <span class="required">*</span></label>
+    <input type="email" id="email" name="email" required />
+    <span class="error-message" id="email-error"></span>
+  </div>
+  
+  <div class="form-group">
+    <label for="message">Viesti <span class="required">*</span></label>
+    <textarea id="message" name="message" rows="5" required></textarea>
+    <span class="error-message" id="message-error"></span>
+  </div>
+  
+  <button type="submit" class="btn-submit">Lähetä</button>
+</form>
+
+<style>
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 500px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-group label {
+    font-weight: 500;
+    color: #333;
+  }
+
+  .required {
+    color: #dc3545;
+    font-weight: 600;
+    margin-left: 2px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: #2d5016;
+  }
+
+  .form-group input:invalid:not(:focus):not(:placeholder-shown),
+  .form-group textarea:invalid:not(:focus):not(:placeholder-shown),
+  .form-group input.error,
+  .form-group textarea.error {
+    border-color: #dc3545;
+  }
+
+  .form-group input:valid:not(:focus):not(:placeholder-shown),
+  .form-group textarea:valid:not(:focus):not(:placeholder-shown) {
+    border-color: #28a745;
+  }
+
+  .error-message {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    min-height: 1.25rem;
+    display: block;
+  }
+
+  .btn-submit {
+    background: #2d5016;
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+
+  .btn-submit:hover:not(:disabled) {
+    background: #1f350f;
+  }
+
+  .btn-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .form-message {
+    padding: 1rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+    font-weight: 500;
+  }
+
+  .form-message.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+  }
+
+  .form-message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+
+  @media (max-width: 768px) {
+    .contact-form {
+      max-width: 100%;
+    }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const submitButton = form?.querySelector('.btn-submit') as HTMLButtonElement;
+  const originalButtonText = submitButton?.textContent || 'Lähetä';
+
+  // Email validation regex
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  // Validation functions
+  function validateEmail(email: string): boolean {
+    return emailRegex.test(email);
+  }
+
+  function showError(fieldId: string, message: string) {
+    const errorElement = document.getElementById(`${fieldId}-error`);
+    const inputElement = document.getElementById(fieldId) as HTMLInputElement | HTMLTextAreaElement;
+    
+    if (errorElement) {
+      errorElement.textContent = message;
+    }
+    if (inputElement) {
+      inputElement.setCustomValidity(message);
+      inputElement.classList.add('error');
+    }
+  }
+
+  function clearError(fieldId: string) {
+    const errorElement = document.getElementById(`${fieldId}-error`);
+    const inputElement = document.getElementById(fieldId) as HTMLInputElement | HTMLTextAreaElement;
+    
+    if (errorElement) {
+      errorElement.textContent = '';
+    }
+    if (inputElement) {
+      inputElement.setCustomValidity('');
+      inputElement.classList.remove('error');
+    }
+  }
+
+  // Email validation on blur
+  const emailInput = document.getElementById('email') as HTMLInputElement;
+  emailInput?.addEventListener('blur', () => {
+    const email = emailInput.value.trim();
+    if (email && !validateEmail(email)) {
+      showError('email', 'Syötä kelvollinen sähköpostiosoite.');
+    } else {
+      clearError('email');
+    }
+  });
+
+  // Real-time email validation while typing (after first blur)
+  let emailTouched = false;
+  emailInput?.addEventListener('input', () => {
+    if (emailTouched) {
+      const email = emailInput.value.trim();
+      if (email && !validateEmail(email)) {
+        showError('email', 'Syötä kelvollinen sähköpostiosoite.');
+      } else {
+        clearError('email');
+      }
+    }
+  });
+
+  emailInput?.addEventListener('blur', () => {
+    emailTouched = true;
+  });
+
+  // Required field validation on blur
+  const requiredFields = ['name', 'phone', 'message'] as const;
+  requiredFields.forEach(fieldId => {
+    const field = document.getElementById(fieldId) as HTMLInputElement | HTMLTextAreaElement;
+    field?.addEventListener('blur', () => {
+      const value = field.value.trim();
+      if (!value) {
+        showError(fieldId, 'Tämä kenttä on pakollinen.');
+      } else {
+        clearError(fieldId);
+      }
+    });
+  });
+
+  // Form submission with validation
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    if (!form || !submitButton) return;
+
+    // Clear all previous errors
+    ['name', 'phone', 'email', 'message'].forEach(id => clearError(id));
+
+    // Validate all fields
+    let isValid = true;
+    const formData = new FormData(form);
+    
+    const name = formData.get('name')?.toString().trim() || '';
+    const phone = formData.get('phone')?.toString().trim() || '';
+    const email = formData.get('email')?.toString().trim() || '';
+    const message = formData.get('message')?.toString().trim() || '';
+
+    if (!name) {
+      showError('name', 'Nimi on pakollinen.');
+      isValid = false;
+    }
+
+    if (!phone) {
+      showError('phone', 'Puhelinnumero on pakollinen.');
+      isValid = false;
+    }
+
+    if (!email) {
+      showError('email', 'Sähköposti on pakollinen.');
+      isValid = false;
+    } else if (!validateEmail(email)) {
+      showError('email', 'Syötä kelvollinen sähköpostiosoite.');
+      isValid = false;
+    }
+
+    if (!message) {
+      showError('message', 'Viesti on pakollinen.');
+      isValid = false;
+    }
+
+    if (!isValid) {
+      // Focus first invalid field
+      const firstError = form.querySelector('.error') as HTMLElement;
+      firstError?.focus();
+      return;
+    }
+
+    // Disable form during submission
+    submitButton.disabled = true;
+    submitButton.textContent = 'Lähetetään...';
+    
+    // Hide any previous messages
+    const existingMessage = form.querySelector('.form-message');
+    if (existingMessage) {
+      existingMessage.remove();
+    }
+
+    try {
+      const data = { name, phone, email, message };
+      
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      // Show message
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `form-message ${result.success ? 'success' : 'error'}`;
+      messageDiv.textContent = result.message || result.error || 'Tuntematon virhe';
+      form.appendChild(messageDiv);
+
+      if (result.success) {
+        // Reset form on success
+        form.reset();
+        // Reset validation state
+        emailTouched = false;
+        ['name', 'phone', 'email', 'message'].forEach(id => clearError(id));
+        // Scroll to message
+        messageDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else {
+        // Re-enable form on error
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText;
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      
+      const messageDiv = document.createElement('div');
+      messageDiv.className = 'form-message error';
+      messageDiv.textContent = 'Verkkoyhteys epäonnistui. Yritä myöhemmin uudelleen.';
+      form.appendChild(messageDiv);
+      
+      submitButton.disabled = false;
+      submitButton.textContent = originalButtonText;
+    }
+  });
+</script>
+
+

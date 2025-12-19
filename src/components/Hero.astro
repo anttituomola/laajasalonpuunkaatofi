@@ -8,16 +8,16 @@ interface Props {
 const { title, subtitle, showButtons = true } = Astro.props;
 ---
 
-<section class="hero">
-  <div class="hero-overlay"></div>
+<section class="hero" role="banner" aria-label="Hero section">
+  <div class="hero-overlay" aria-hidden="true"></div>
   <div class="hero-content">
     <h1>{title}</h1>
     {subtitle && <p class="subtitle">{subtitle}</p>}
     {showButtons && (
-      <div class="hero-buttons">
+      <nav class="hero-buttons" aria-label="Primary navigation">
         <a href="/ota-yhteytta" class="btn btn-primary">Ota yhteyttä</a>
         <a href="/palvelut" class="btn btn-secondary">Palvelumme</a>
-      </div>
+      </nav>
     )}
   </div>
 </section>

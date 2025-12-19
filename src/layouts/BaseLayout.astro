@@ -3,13 +3,110 @@ interface Props {
   title: string;
   description: string;
   canonicalURL?: string;
+  keywords?: string;
+  ogImage?: string;
+  structuredData?: object;
 }
 
-const { title, description, canonicalURL } = Astro.props;
+const { title, description, canonicalURL, keywords, ogImage, structuredData } = Astro.props;
 const siteURL = Astro.site || 'https://laajasalonpuunkaato.fi';
-const fullTitle = title === 'Etusivu' ? 'Laajasalon Puunkaatopalvelu - Puunkaatopalvelut Uudellamaalla' : `${title} | Laajasalon Puunkaatopalvelu`;
+const fullTitle = title === 'Etusivu' 
+  ? 'Puunkaato Laajasalo & Helsinki | Laajasalon Puunkaatopalvelu - Turvallinen puunkaato Uudellamaalla' 
+  : `${title} | Laajasalon Puunkaatopalvelu`;
 const url = canonicalURL || Astro.url.pathname;
 const fullURL = new URL(url, siteURL).toString();
+const defaultKeywords = 'puunkaato, puunkaatopalvelu, puunkaato Laajasalo, puunkaato Helsinki, puunkaato Uusimaa, pihapuiden kaato, hoitoleikkaus, puunhoito, kantojyrsintä, arboristi Helsinki, arboristi Laajasalo, puunkaato saaristossa, vaativa puunkaato, turvallinen puunkaato, tree removal Helsinki, arborist Helsinki';
+const metaKeywords = keywords || defaultKeywords;
+const defaultOgImage = `${siteURL}/images/ville-kulmala.jpg`;
+const metaOgImage = ogImage || defaultOgImage;
+
+// Default structured data
+const defaultStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Laajasalon Puunkaatopalvelu",
+  "alternateName": "Laajasalon Puunkaato",
+  "image": `${siteURL}/images/logo.png`,
+  "description": "Ammattitaitoinen puunkaatopalvelu Laajasalossa ja Helsingissä. Erikoistumme vaativiin pihapuiden kaatoihin, hoitoleikkuisiin sekä puunkaatoon saaristossa. Turvallinen puunkaato koko Uudenmaan alueella.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Reiherintie 1 K 126",
+    "addressLocality": "Helsinki",
+    "addressRegion": "Uusimaa",
+    "postalCode": "00870",
+    "addressCountry": "FI"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "60.1756",
+    "longitude": "25.0142"
+  },
+  "telephone": "+358505148294",
+  "email": "ville@laajasalonpuunkaato.fi",
+  "url": siteURL,
+  "priceRange": "$$",
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Helsinki"
+    },
+    {
+      "@type": "City",
+      "name": "Laajasalo"
+    },
+    {
+      "@type": "State",
+      "name": "Uusimaa"
+    }
+  ],
+  "serviceType": [
+    "Puunkaato",
+    "Puiden hoitoleikkaus",
+    "Kantojyrsintä",
+    "Puunhoito",
+    "Arboristi palvelut"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Puunkaatopalvelut",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Pihapuiden kaadot",
+          "description": "Turvallinen ja ammattitaitoinen pihapuiden kaato Helsingissä ja Laajasalossa"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Puiden hoitoleikkaukset",
+          "description": "Puiden hoitoleikkaus ja puunhoito palvelut"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Puunkaadot saaristossa",
+          "description": "Puunkaato saaristossa ja vaikeissa paikoissa"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Kantojyrsintä",
+          "description": "Kantojen poisto ja kantojyrsintä palvelut"
+        }
+      }
+    ]
+  }
+};
+
+const finalStructuredData = structuredData || defaultStructuredData;
 ---
 
 <!doctype html>
@@ -17,7 +114,14 @@ const fullURL = new URL(url, siteURL).toString();
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
+    <meta name="keywords" content={metaKeywords} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="author" content="Laajasalon Puunkaatopalvelu" />
+    <meta name="geo.region" content="FI-18" />
+    <meta name="geo.placename" content="Helsinki" />
+    <meta name="geo.position" content="60.1756;25.0142" />
+    <meta name="ICBM" content="60.1756, 25.0142" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     
@@ -37,42 +141,32 @@ const fullURL = new URL(url, siteURL).toString();
     <title>{fullTitle}</title>
     <link rel="canonical" href={fullURL} />
     
+    <!-- Language alternatives -->
+    <link rel="alternate" hreflang="fi" href={fullURL} />
+    <link rel="alternate" hreflang="x-default" href={fullURL} />
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={fullURL} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
+    <meta property="og:image" content={metaOgImage} />
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="800" />
+    <meta property="og:image:alt" content="Ville Kulmala - Ammattitaitoinen arboristi ja puunkaatopalvelun yrittäjä Helsingissä ja Laajasalossa" />
     <meta property="og:locale" content="fi_FI" />
+    <meta property="og:site_name" content="Laajasalon Puunkaatopalvelu" />
     
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={fullURL} />
-    <meta property="twitter:title" content={fullTitle} />
-    <meta property="twitter:description" content={description} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={fullURL} />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={metaOgImage} />
+    <meta name="twitter:image:alt" content="Ville Kulmala - Ammattitaitoinen arboristi ja puunkaatopalvelun yrittäjä Helsingissä ja Laajasalossa" />
     
     <!-- Structured Data -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Laajasalon Puunkaatopalvelu",
-      "image": `${siteURL}/images/logo.png`,
-      "description": "Puunkaatopalvelut Uudellamaalla. Erikoistumme vaativiin pihapuiden kaatoihin, hoitoleikkuisiin sekä puunkaatoon saaristossa.",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Reiherintie 1 K 126",
-        "addressLocality": "Helsinki",
-        "postalCode": "00870",
-        "addressCountry": "FI"
-      },
-      "telephone": "+358505148294",
-      "email": "ville@laajasalonpuunkaato.fi",
-      "url": siteURL,
-      "priceRange": "$$",
-      "areaServed": {
-        "@type": "State",
-        "name": "Uusimaa"
-      }
-    })} />
+    <script type="application/ld+json" set:html={JSON.stringify(finalStructuredData)} />
   </head>
   <body>
     <slot />

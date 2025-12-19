@@ -1,11 +1,13 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://laajasalonpuunkaato.fi',
-  output: 'hybrid', // Enable server-side rendering for API routes while keeping pages static
+  output: 'server', // Server-side rendering for API routes
+  adapter: vercel(),
   integrations: [sitemap()],
   compressHTML: true,
   build: {

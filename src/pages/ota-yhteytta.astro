@@ -9,12 +9,13 @@ import ContactInfo from '../components/ContactInfo.astro';
 
 <BaseLayout
   title="Ota yhteyttä"
-  description="Ota yhteyttä Laajasalon Puunkaatopalveluun. Varaa ilmainen kartoitus tai kysy lisätietoja puunkaatopalveluistamme. Puhelin: +358 50 514 8294, Sähköposti: ville@laajasalonpuunkaato.fi"
+  description="Ota yhteyttä Laajasalon Puunkaatopalveluun. Varaa ilmainen kartoitus puunkaatotyölle Helsingissä tai Laajasalossa. Puhelin: +358 50 514 8294, Sähköposti: ville@laajasalonpuunkaato.fi"
+  keywords="puunkaato kartoitus, ilmainen kartoitus puunkaato, puunkaato yhteydenotto, arboristi Helsinki yhteydenotto"
 >
   <Header />
   
   <Hero 
-    title="Ota yhteyttä"
+    title="Varaa ilmainen kartoitus puunkaatotyölle"
     showButtons={false}
   />
 
@@ -31,6 +32,26 @@ import ContactInfo from '../components/ContactInfo.astro';
 
   <Footer />
 </BaseLayout>
+
+<!-- Breadcrumb Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Etusivu",
+      "item": "https://laajasalonpuunkaato.fi/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Ota yhteyttä",
+      "item": "https://laajasalonpuunkaato.fi/ota-yhteytta"
+    }
+  ]
+})} />
 
 <style>
   .container {

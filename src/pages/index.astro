@@ -10,43 +10,44 @@ import ContactInfo from '../components/ContactInfo.astro';
 
 <BaseLayout
   title="Etusivu"
-  description="Laajasalon Puunkaatopalvelu - Puunkaatopalvelut Uudellamaalla. Erikoistumme vaativiin pihapuiden kaatoihin, hoitoleikkuisiin sekä puunkaatoon saaristossa."
+  description="Puunkaato Laajasalo ja Helsinki - Ammattitaitoinen puunkaatopalvelu Uudellamaalla. Turvallinen puunkaato, hoitoleikkaus, kantojyrsintä ja puunkaato saaristossa. Ilmainen kartoitus. Kotitalousvähennys."
+  keywords="puunkaato Laajasalo, puunkaato Helsinki, puunkaatopalvelu, pihapuiden kaato, hoitoleikkaus, puunkaato saaristossa, kantojyrsintä, arboristi Helsinki, turvallinen puunkaato, vaativa puunkaato"
 >
   <Header />
   
   <Hero 
-    title="Laajasalon Puunkaatopalvelu"
-    subtitle="Puunkaatopalvelut Uudellamaalla"
+    title="Puunkaato Laajasalo & Helsinki"
+    subtitle="Turvallinen puunkaatopalvelu Uudellamaalla - Erikoistumme vaativiin pihapuiden kaatoihin ja saaristopuunkaatoon"
   />
 
   <main>
     <!-- Services Section -->
-    <section class="services-section">
+    <section class="services-section" aria-labelledby="palvelut-heading">
       <div class="container">
-        <h2>Palvelumme</h2>
+        <h2 id="palvelut-heading">Puunkaatopalvelut Laajasalossa ja Helsingissä</h2>
         <p class="section-description">
-          Voit olla varma, suoritamme työmme aina tehokkaasti ja turvallisesti. Erikoistumme vaativiin pihapuiden kaatoihin, hoitoleikkuisiin sekä puunkaatoon saaristossa.
+          Tarjoamme ammattitaitoista ja turvallista puunkaatopalvelua koko Uudenmaan alueella. Erikoistumme vaativiin pihapuiden kaatoihin, hoitoleikkuisiin sekä puunkaatoon saaristossa. Voit olla varma, että suoritamme työmme aina tehokkaasti ja turvallisesti.
         </p>
         <div class="services-grid">
           <ServiceCard
-            title="Pihapuiden kaadot"
+            title="Pihapuiden kaadot Helsinki"
             image="/images/pihapuiden-kaadot.jpg"
-            imageAlt="Pihapuiden kaadot"
+            imageAlt="Ammattitaitoinen pihapuiden kaato Helsingissä - Turvallinen puunkaato ahtaissa paikoissa"
           />
           <ServiceCard
             title="Puiden hoitoleikkaukset"
             image="/images/puiden-hoitoleikkaukset.jpg"
-            imageAlt="Puiden hoitoleikkaukset"
+            imageAlt="Puiden hoitoleikkaus ja puunhoito palvelut - Ammattitaitoinen arboristi Helsinki"
           />
           <ServiceCard
             title="Puunkaadot saaristossa"
             image="/images/puunkaadot-saaristossa.jpg"
-            imageAlt="Puunkaadot saaristossa"
+            imageAlt="Puunkaato saaristossa ja saarilla - Erikoistunut puunkaatopalvelu Helsingin saaristoon"
           />
           <ServiceCard
-            title="Kantojyrsintä"
+            title="Kantojyrsintä Helsinki"
             image="/images/kantojyrsinta.jpg"
-            imageAlt="Kantojyrsintä"
+            imageAlt="Kantojyrsintä ja kantojen poisto Helsingissä - Tehokas kantojen poisto palvelu"
           />
         </div>
         <div class="services-cta">
@@ -55,46 +56,85 @@ import ContactInfo from '../components/ContactInfo.astro';
       </div>
     </section>
 
-    <!-- Tax Deduction Section -->
-    <section class="tax-section">
+    <!-- FAQ Section -->
+    <section class="faq-section" aria-labelledby="faq-heading">
       <div class="container">
-        <h2>Muista kotitalousvähennys</h2>
+        <h2 id="faq-heading">Usein kysytyt kysymykset puunkaadosta</h2>
+        <div class="faq-list">
+          <article class="faq-item">
+            <h3>Mikä on puunkaadon hinta?</h3>
+            <p>
+              Puunkaadon hinta riippuu useista tekijöistä kuten puun koosta, sijainnista, työn vaativuudesta ja tarvittavista laitteista. Tarjoamme ilmaisen kartoituksen, jossa arvioimme työn kustannukset tarkasti. <strong>Puunkaato</strong> piha-alueella kuuluu kotitalousvähennyksen piiriin, mikä alentaa loppuhintaa.
+            </p>
+          </article>
+          <article class="faq-item">
+            <h3>Tarvitaanko lupa puunkaatoon?</h3>
+            <p>
+              Useimmissa tapauksissa <strong>puunkaato</strong> omalla tontilla ei vaadi lupaa. Jos puu sijaitsee suojelualueella tai on suojeltu, voi lupa olla tarpeen. Autamme asiakkaitamme selvittämään lupavaatimukset ja hoidamme tarvittaessa lupahakemukset.
+            </p>
+          </article>
+          <article class="faq-item">
+            <h3>Kuuluuko puunkaato kotitalousvähennykseen?</h3>
+            <p>
+              Kyllä, <strong>puunkaato piha-alueella</strong> ja muut pihatyöt kuuluvat kotitalousvähennyksen piiriin. Voit vähentää työn kustannukset verotuksessa. Lue lisää kotitalousvähennyksestä vero.fi verkkosivuilta.
+            </p>
+          </article>
+          <article class="faq-item">
+            <h3>Miten turvallinen puunkaato suoritetaan?</h3>
+            <p>
+              Suoritamme <strong>turvallisen puunkaadon</strong> käyttämällä ammattitaitoista kalustoa ja tekniikoita. Ahtaissa paikoissa käytämme vaiheittaista kaatoa tai köysitekniikkaa varmistaaksemme, etteivät lähistöllä olevat rakennukset tai istutukset vahingoitu.
+            </p>
+          </article>
+          <article class="faq-item">
+            <h3>Teettekö puunkaatoa saaristossa?</h3>
+            <p>
+              Kyllä, erikoistumme <strong>puunkaatoon saaristossa</strong>. Laajasalon sijainti mahdollistaa nopean pääsyn Helsingin saaristoon omalla kalustollamme. Olipa tarve puunkaadolle tai puunhoitoleikkauksille missä tahansa saariston kohteessa, saavumme paikalle ripeästi.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tax Deduction Section -->
+    <section class="tax-section" aria-labelledby="tax-heading">
+      <div class="container">
+        <h2 id="tax-heading">Muista kotitalousvähennys puunkaadossa</h2>
         <p>
-          Puunkaato piha-alueella ja muut pihatyöt kuuluvat kotitalousvähennyksen piiriin. Lue lisää kotitalousvähennyksestä vero.fi verkkosivuilta.
+          <strong>Puunkaato piha-alueella</strong> ja muut pihatyöt kuuluvat kotitalousvähennyksen piiriin. Tämä tarkoittaa, että voit vähentää työn kustannukset verotuksessa. Lue lisää <strong>kotitalousvähennyksestä puunkaato</strong> -palveluista vero.fi verkkosivuilta.
         </p>
-        <a href="https://www.vero.fi/henkiloasiakkaat/verokortti-ja-veroilmoitus/vahennykset/kotitalousvahennys/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Lue lisää</a>
+        <a href="https://www.vero.fi/henkiloasiakkaat/verokortti-ja-veroilmoitus/vahennykset/kotitalousvahennys/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Lue lisää kotitalousvähennyksestä</a>
       </div>
     </section>
 
     <!-- Free Consultation CTA -->
-    <section class="cta-section">
+    <section class="cta-section" aria-labelledby="cta-heading">
       <div class="container">
-        <h2>Varaa ilmainen kartoitus!</h2>
+        <h2 id="cta-heading">Varaa ilmainen kartoitus puunkaatotyölle!</h2>
         <p>
-          Haluatko varmistaa, että puunkaatoprojektisi sujuu suunnitellusti ja turvallisesti? Varaa ilmainen kartoitus meiltä.
+          Haluatko varmistaa, että <strong>puunkaatoprojektisi</strong> sujuu suunnitellusti ja turvallisesti? Varaa <strong>ilmainen kartoitus</strong> meiltä. Tarjoamme ammattitaitoista neuvontaa puunkaatotyön suunnittelussa Helsingissä ja Laajasalossa.
         </p>
-        <a href="/ota-yhteytta" class="btn btn-primary">Varaa kartoitus</a>
+        <a href="/ota-yhteytta" class="btn btn-primary">Varaa ilmainen kartoitus</a>
       </div>
     </section>
 
     <!-- About Section -->
-    <section class="about-section">
+    <section class="about-section" aria-labelledby="about-heading">
       <div class="container">
         <div class="about-content">
           <div class="about-text">
-            <h2>Meistä</h2>
+            <h2 id="about-heading">Ammattitaitoinen puunkaatopalvelu Laajasalossa ja Helsingissä</h2>
             <p>
-              Olemme erikoistuneet vaativampiin pihapuiden kaatoihin, hoitoleikkuisiin sekä puunkaatoon saaristossa. Tarjoamme ammattitaitoista ja luotettavaa palvelua koko Uudenmaan alueella.
+              Olemme erikoistuneet <strong>vaativiin pihapuiden kaatoihin</strong>, hoitoleikkuisiin sekä <strong>puunkaatoon saaristossa</strong>. Tarjoamme ammattitaitoista ja luotettavaa <strong>puunkaatopalvelua</strong> koko Uudenmaan alueella, erityisesti Helsingissä ja Laajasalossa.
             </p>
             <p>
-              Olipa kyseessä sitten vaikeasti saavutettavissa oleva piha-alue tai saariston puut, voit olla varma, että suoritamme työmme aina tehokkaasti ja turvallisesti.
+              Olipa kyseessä sitten <strong>vaikean paikan puunkaato</strong>, ahtaan pihan puut tai saariston puut, voit olla varma, että suoritamme työmme aina tehokkaasti ja turvallisesti. Käytämme tarvittaessa <strong>köysitekniikkaa puunkaadossa</strong> varmistaaksemme turvallisuuden.
             </p>
-            <a href="/ota-yhteytta" class="btn btn-primary">Ota yhteyttä</a>
+            <a href="/ota-yhteytta" class="btn btn-primary">Varaa ilmainen kartoitus</a>
           </div>
           <div class="about-image">
             <img 
               src="/images/ville-kulmala.jpg" 
-              alt="Ville Kulmala" 
+              alt="Ville Kulmala - Ammattitaitoinen arboristi ja puunkaatopalvelun yrittäjä Helsingissä" 
               loading="lazy" 
               decoding="async"
               width="600"
@@ -171,9 +211,60 @@ import ContactInfo from '../components/ContactInfo.astro';
 
   .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
     margin-bottom: 3rem;
+  }
+
+  /* FAQ Section */
+  .faq-section {
+    padding: 5rem 0;
+    background: white;
+  }
+
+  .faq-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #333;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .faq-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #2d5016;
+  }
+
+  .faq-list {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+    border-left: 4px solid #2d5016;
+  }
+
+  .faq-item h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+    color: #2d5016;
+  }
+
+  .faq-item p {
+    color: #666;
+    line-height: 1.8;
+    font-size: 1rem;
   }
 
   .services-cta {
@@ -314,6 +405,13 @@ import ContactInfo from '../components/ContactInfo.astro';
     border: 2px solid #2d5016;
   }
 
+  @media (max-width: 1200px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+  }
+
   @media (max-width: 968px) {
     .about-content,
     .contact-wrapper {
@@ -321,22 +419,82 @@ import ContactInfo from '../components/ContactInfo.astro';
     }
 
     .services-grid {
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .services-grid {
+      grid-template-columns: 1fr;
     }
   }
 
   @media (max-width: 768px) {
     .services-section h2,
     .cta-section h2,
-    .about-text h2 {
+    .about-text h2,
+    .faq-section h2 {
       font-size: 2rem;
     }
 
     .section-description,
     .tax-section p,
-    .cta-section p {
+    .cta-section p,
+    .faq-item h3 {
       font-size: 1rem;
+    }
+
+    .faq-item {
+      padding: 1rem;
     }
   }
 </style>
+
+<!-- FAQ Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Mikä on puunkaadon hinta?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Puunkaadon hinta riippuu useista tekijöistä kuten puun koosta, sijainnista, työn vaativuudesta ja tarvittavista laitteista. Tarjoamme ilmaisen kartoituksen, jossa arvioimme työn kustannukset tarkasti. Puunkaato piha-alueella kuuluu kotitalousvähennyksen piiriin, mikä alentaa loppuhintaa."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Tarvitaanko lupa puunkaatoon?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Useimmissa tapauksissa puunkaato omalla tontilla ei vaadi lupaa. Jos puu sijaitsee suojelualueella tai on suojeltu, voi lupa olla tarpeen. Autamme asiakkaitamme selvittämään lupavaatimukset ja hoidamme tarvittaessa lupahakemukset."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kuuluuko puunkaato kotitalousvähennykseen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Kyllä, puunkaato piha-alueella ja muut pihatyöt kuuluvat kotitalousvähennyksen piiriin. Voit vähentää työn kustannukset verotuksessa."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Miten turvallinen puunkaato suoritetaan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Suoritamme turvallisen puunkaadon käyttämällä ammattitaitoista kalustoa ja tekniikoita. Ahtaissa paikoissa käytämme vaiheittaista kaatoa tai köysitekniikkaa varmistaaksemme, etteivät lähistöllä olevat rakennukset tai istutukset vahingoitu."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Teettekö puunkaatoa saaristossa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Kyllä, erikoistumme puunkaatoon saaristossa. Laajasalon sijainti mahdollistaa nopean pääsyn Helsingin saaristoon omalla kalustollamme. Olipa tarve puunkaadolle tai puunhoitoleikkauksille missä tahansa saariston kohteessa, saavumme paikalle ripeästi."
+      }
+    }
+  ]
+})} />
 

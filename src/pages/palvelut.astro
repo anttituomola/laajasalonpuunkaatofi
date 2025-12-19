@@ -9,24 +9,25 @@ import ContactInfo from '../components/ContactInfo.astro';
 
 <BaseLayout
   title="Palvelut"
-  description="Laajasalon Puunkaatopalvelu tarjoaa pihapuiden kaatoja, hoitoleikkauksia, saaristopuunkaatoja ja kantojyrsintää. Ammattitaitoista palvelua koko Uudenmaan alueella."
+  description="Puunkaatopalvelut Laajasalossa ja Helsingissä: Pihapuiden kaadot, hoitoleikkaukset, puunkaato saaristossa ja kantojyrsintä. Ammattitaitoista ja turvallista palvelua koko Uudenmaan alueella."
+  keywords="puunkaatopalvelu, pihapuiden kaato Helsinki, hoitoleikkaus, puunkaato saaristossa, kantojyrsintä Helsinki, puunhoito, arboristi palvelut, vaativa puunkaato"
 >
   <Header />
   
   <Hero 
-    title="Palvelumme"
+    title="Puunkaatopalvelut Laajasalossa ja Helsingissä"
     showButtons={false}
   />
 
   <main>
     <!-- Service 1: Pihapuiden kaadot -->
-    <section class="service-detail">
+    <section class="service-detail" itemscope itemtype="https://schema.org/Service">
       <div class="container">
         <div class="service-content">
           <div class="service-image">
             <img 
               src="/images/pihapuiden-kaadot.jpg" 
-              alt="Pihapuiden kaadot" 
+              alt="Ammattitaitoinen pihapuiden kaato Helsingissä - Turvallinen puunkaato ahtaissa paikoissa ja vaikeissa paikoissa" 
               loading="lazy" 
               decoding="async"
               width="800"
@@ -34,24 +35,24 @@ import ContactInfo from '../components/ContactInfo.astro';
             />
           </div>
           <div class="service-text">
-            <h2>Pihapuiden kaadot</h2>
-            <p>
-              Tarjoamme räätälöityjä ratkaisuja pihapuiden kaatotöihin. Kaatotyöt suunnitellaan aina suunnitellaan huolellisesti tapauskohtaisesti. Otamme huomioon sekä käytettävissä oleva tila että puun koon. Ahtaissa paikoissa kaato suoritetaan vaiheittain: ensin karsimme puun pystyyn ja sitten suoritamme kaadon osissa. Jos tila on erittäin rajallinen, köyden varassa laskeutuvat oksat varmistavat, etteivät lähistöllä olevat rakennukset tai istutukset vahingoitu.
+            <h2 itemprop="name">Pihapuiden kaadot Helsinki ja Laajasalo</h2>
+            <p itemprop="description">
+              Tarjoamme räätälöityjä ratkaisuja <strong>pihapuiden kaatoihin</strong> Helsingissä ja Laajasalossa. Kaatotyöt suunnitellaan aina huolellisesti tapauskohtaisesti. Otamme huomioon sekä käytettävissä oleva tila että puun koon. <strong>Ahtaissa paikoissa puunkaato</strong> suoritetaan vaiheittain: ensin karsimme puun pystyyn ja sitten suoritamme kaadon osissa. Jos tila on erittäin rajallinen, <strong>köysitekniikalla puunkaato</strong> varmistavat, etteivät lähistöllä olevat rakennukset tai istutukset vahingoitu. Erikoistumme <strong>vaikean paikan puunkaatoon</strong> ja <strong>vaativaan puunkaatoon</strong>.
             </p>
-            <a href="/ota-yhteytta" class="btn btn-primary">Ota yhteyttä</a>
+            <a href="/ota-yhteytta" class="btn btn-primary">Varaa ilmainen kartoitus</a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Service 2: Puiden hoitoleikkaukset -->
-    <section class="service-detail service-alt">
+    <section class="service-detail service-alt" itemscope itemtype="https://schema.org/Service">
       <div class="container">
         <div class="service-content service-reverse">
           <div class="service-image">
             <img 
               src="/images/puiden-hoitoleikkaukset.jpg" 
-              alt="Puiden hoitoleikkaukset" 
+              alt="Puiden hoitoleikkaus ja puunhoito Helsingissä - Ammattitaitoinen arboristi palvelut" 
               loading="lazy" 
               decoding="async"
               width="800"
@@ -59,24 +60,24 @@ import ContactInfo from '../components/ContactInfo.astro';
             />
           </div>
           <div class="service-text">
-            <h2>Puiden hoitoleikkaukset</h2>
-            <p>
-              Huolehdimme puiden kasvun ja terveyden ylläpitämiseen tarvittavat toimenpiteet. Se käsittää erilaisia leikkauksia, joiden avulla voidaan vaikuttaa puun rakenteeseen, kasvusuuntaan, oksistoon ja yleiseen kuntoon. Hoitoleikkauksen tavoitteena on edistää puun terveyttä, estää haitallisia kasvutapoja, poistaa kuolleita tai vaurioituneita oksia sekä parantaa puun ulkonäköä ja turvallisuutta. Hoitoleikkauksella pyritään myös säilyttämään puun sopiva koko ja muoto sekä edistämään sen pitkäikäisyyttä.
+            <h2 itemprop="name">Puiden hoitoleikkaukset ja puunhoito</h2>
+            <p itemprop="description">
+              Tarjoamme ammattitaitoista <strong>hoitoleikkausta</strong> ja <strong>puunhoitoa</strong> Helsingissä ja Laajasalossa. Huolehdimme puiden kasvun ja terveyden ylläpitämiseen tarvittavat toimenpiteet. <strong>Hoitoleikkaus</strong> käsittää erilaisia leikkauksia, joiden avulla voidaan vaikuttaa puun rakenteeseen, kasvusuuntaan, oksistoon ja yleiseen kuntoon. Hoitoleikkauksen tavoitteena on edistää puun terveyttä, estää haitallisia kasvutapoja, poistaa kuolleita tai vaurioituneita oksia sekä parantaa puun ulkonäköä ja turvallisuutta. Hoitoleikkauksella pyritään myös säilyttämään puun sopiva koko ja muoto sekä edistämään sen pitkäikäisyyttä.
             </p>
-            <a href="/ota-yhteytta" class="btn btn-primary">Ota yhteyttä</a>
+            <a href="/ota-yhteytta" class="btn btn-primary">Varaa ilmainen kartoitus</a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Service 3: Puunkaadot saaristossa -->
-    <section class="service-detail">
+    <section class="service-detail" itemscope itemtype="https://schema.org/Service">
       <div class="container">
         <div class="service-content">
           <div class="service-image">
             <img 
               src="/images/puunkaadot-saaristossa.jpg" 
-              alt="Puunkaadot saaristossa" 
+              alt="Puunkaato saaristossa ja saarilla - Erikoistunut puunkaatopalvelu Helsingin saaristoon ja saarille" 
               loading="lazy" 
               decoding="async"
               width="800"
@@ -84,24 +85,24 @@ import ContactInfo from '../components/ContactInfo.astro';
             />
           </div>
           <div class="service-text">
-            <h2>Puunkaadot saaristossa</h2>
-            <p>
-              Laajasalon puunkaatopalvelu sijaitsee merellisessä Laajasalossa. Tämä sijainti mahdollistaa nopean ja kätevän pääsyn Helsingin saaristoon omalla kalustollamme. Olipa tarve puunkaadolle tai puunhoitoleikkauksille missä tahansa saariston kohteessa, voit luottaa siihen, että saavumme paikalle ripeästi ja valmiina tarjoamaan asiantuntevaa palvelua.
+            <h2 itemprop="name">Puunkaadot saaristossa ja saarilla</h2>
+            <p itemprop="description">
+              Erikoistumme <strong>puunkaatoon saaristossa</strong> ja <strong>puunkaatoon saaressa</strong>. Laajasalon puunkaatopalvelu sijaitsee merellisessä Laajasalossa, mikä mahdollistaa nopean ja kätevän pääsyn <strong>Helsingin saaristoon</strong> omalla kalustollamme. Olipa tarve <strong>saariston puunkaadolle</strong> tai puunhoitoleikkauksille missä tahansa saariston kohteessa, voit luottaa siihen, että saavumme paikalle ripeästi ja valmiina tarjoamaan asiantuntevaa palvelua. Tarjoamme myös <strong>puunkaato ilman kaatotilaa</strong> -ratkaisuja saaristossa.
             </p>
-            <a href="/ota-yhteytta" class="btn btn-primary">Ota yhteyttä</a>
+            <a href="/ota-yhteytta" class="btn btn-primary">Varaa ilmainen kartoitus</a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Service 4: Kantojyrsintä -->
-    <section class="service-detail service-alt">
+    <section class="service-detail service-alt" itemscope itemtype="https://schema.org/Service">
       <div class="container">
         <div class="service-content service-reverse">
           <div class="service-image">
             <img 
               src="/images/kantojyrsinta.jpg" 
-              alt="Kantojyrsintä" 
+              alt="Kantojyrsintä ja kantojen poisto Helsingissä - Tehokas kantojen poisto palvelu Uudellamaalla" 
               loading="lazy" 
               decoding="async"
               width="800"
@@ -109,24 +110,24 @@ import ContactInfo from '../components/ContactInfo.astro';
             />
           </div>
           <div class="service-text">
-            <h2>Kantojyrsintä</h2>
-            <p>
-              Kantojyrsintä poistaa häiritsevät kannot vaivattomasti. Turvallisella ja tehokkaalla menetelmällämme emme aiheuta häiriötä pihan rakenteille tai kasvillisuudelle. Huolehdimme siitä, että pihaanne jää siisti jälki kantojen poiston jälkeen.
+            <h2 itemprop="name">Kantojyrsintä ja kantojen poisto Helsinki</h2>
+            <p itemprop="description">
+              Tarjoamme ammattitaitoista <strong>kantojyrsintää</strong> ja <strong>kantojen poistoa</strong> Helsingissä ja Laajasalossa. <strong>Kantojyrsintä</strong> poistaa häiritsevät kannot vaivattomasti. Turvallisella ja tehokkaalla menetelmällämme emme aiheuta häiriötä pihan rakenteille tai kasvillisuudelle. Huolehdimme siitä, että pihaanne jää siisti jälki <strong>kantojen poiston</strong> jälkeen.
             </p>
-            <a href="/ota-yhteytta" class="btn btn-primary">Ota yhteyttä</a>
+            <a href="/ota-yhteytta" class="btn btn-primary">Varaa ilmainen kartoitus</a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Tax Deduction Section -->
-    <section class="tax-section">
+    <section class="tax-section" aria-labelledby="tax-heading">
       <div class="container">
-        <h2>Muista kotitalousvähennys</h2>
+        <h2 id="tax-heading">Kotitalousvähennys puunkaadossa</h2>
         <p>
-          Puunkaato piha-alueella ja muut pihatyöt kuuluvat kotitalousvähennyksen piiriin. Lue lisää kotitalousvähennyksestä vero.fi verkkosivuilta.
+          <strong>Puunkaato piha-alueella</strong> ja muut pihatyöt kuuluvat <strong>kotitalousvähennyksen</strong> piiriin. Voit vähentää puunkaatotyön kustannukset verotuksessa. Lue lisää <strong>kotitalousvähennyksestä puunkaato</strong> -palveluista vero.fi verkkosivuilta.
         </p>
-        <a href="https://www.vero.fi/henkiloasiakkaat/verokortti-ja-veroilmoitus/vahennykset/kotitalousvahennys/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Lue lisää</a>
+        <a href="https://www.vero.fi/henkiloasiakkaat/verokortti-ja-veroilmoitus/vahennykset/kotitalousvahennys/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Lue lisää kotitalousvähennyksestä</a>
       </div>
     </section>
 
@@ -143,6 +144,26 @@ import ContactInfo from '../components/ContactInfo.astro';
 
   <Footer />
 </BaseLayout>
+
+<!-- Breadcrumb Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Etusivu",
+      "item": "https://laajasalonpuunkaato.fi/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Palvelut",
+      "item": "https://laajasalonpuunkaato.fi/palvelut"
+    }
+  ]
+})} />
 
 <style>
   .container {

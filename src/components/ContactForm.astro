@@ -331,6 +331,9 @@
         // Reset validation state
         emailTouched = false;
         ['name', 'phone', 'email', 'message'].forEach(id => clearError(id));
+        // Reset button state
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText;
         // Scroll to message
         messageDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       } else {

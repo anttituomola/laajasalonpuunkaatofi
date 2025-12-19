@@ -33,8 +33,13 @@
   .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
     max-width: 500px;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e8e8e8;
   }
 
   .form-group {
@@ -46,6 +51,7 @@
   .form-group label {
     font-weight: 500;
     color: #333;
+    font-size: 0.95rem;
   }
 
   .required {
@@ -54,20 +60,42 @@
     margin-left: 2px;
   }
 
-  .form-group input,
-  .form-group textarea {
-    padding: 0.75rem;
+  .form-group input {
+    padding: 0.875rem;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 6px;
     font-family: inherit;
     font-size: 1rem;
-    transition: border-color 0.3s;
+    transition: all 0.2s ease;
+    background: #fafafa;
+    width: 100%;
+  }
+
+  .form-group textarea {
+    padding: 0.875rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    background: #fafafa;
+    resize: vertical;
+    min-height: 100px;
+    width: 100%;
+  }
+
+  .form-group input:hover,
+  .form-group textarea:hover {
+    border-color: #bbb;
+    background: white;
   }
 
   .form-group input:focus,
   .form-group textarea:focus {
     outline: none;
     border-color: #2d5016;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(45, 80, 22, 0.1);
   }
 
   /* Only show error border when .error class is added (after blur validation) */
@@ -87,15 +115,25 @@
   .btn-submit {
     background: #2d5016;
     color: white;
-    padding: 0.75rem 2rem;
-    border-radius: 4px;
+    padding: 0.875rem 2rem;
+    border-radius: 6px;
     font-weight: 600;
     font-size: 1rem;
-    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(45, 80, 22, 0.2);
   }
 
   .btn-submit:hover:not(:disabled) {
     background: #1f350f;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(45, 80, 22, 0.3);
+  }
+
+  .btn-submit:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(45, 80, 22, 0.2);
   }
 
   .btn-submit:disabled {

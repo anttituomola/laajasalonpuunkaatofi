@@ -3,12 +3,13 @@ interface Props {
   title: string;
   subtitle?: string;
   showButtons?: boolean;
+  backgroundImage?: string;
 }
 
-const { title, subtitle, showButtons = true } = Astro.props;
+const { title, subtitle, showButtons = true, backgroundImage = '/images/cta-bg.jpg' } = Astro.props;
 ---
 
-<section class="hero" role="banner" aria-label="Hero section">
+<section class="hero" role="banner" aria-label="Hero section" style={`--hero-bg-image: url('${backgroundImage}')`}>
   <div class="hero-overlay" aria-hidden="true"></div>
   <div class="hero-content">
     <h1>{title}</h1>
@@ -30,7 +31,7 @@ const { title, subtitle, showButtons = true } = Astro.props;
     align-items: center;
     justify-content: center;
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-      url('/images/hero-bg.jpg') center/cover;
+      var(--hero-bg-image, url('/images/cta-bg.jpg')) center/cover;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

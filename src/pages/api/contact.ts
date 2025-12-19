@@ -81,7 +81,8 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     // Use process.env to prevent build-time inlining of secrets
-    const adminEmail = process.env.ADMIN_EMAIL || 'anttituomola8@gmail.com';
+    const senderEmail = process.env.ADMIN_EMAIL || 'anttituomola8@gmail.com';
+    const recipientEmail = process.env.CONTACT_RECIPIENT_EMAIL || process.env.ADMIN_EMAIL || 'anttituomola8@gmail.com';
     const sesClient = getSESClient();
 
     if (!sesClient) {
@@ -115,9 +116,9 @@ Lähetetty: ${new Date().toLocaleString('fi-FI')}
 
     // Send email using AWS SES
     const command = new SendEmailCommand({
-      Source: adminEmail, // SES verified sender email
+      Source: senderEmail, // SES verified sender email (must be verified in AWS SES)
       Destination: {
-        ToAddresses: [adminEmail],
+        ToAddresses: [recipientEmail], // Recipient email (can be different from sender)
       },
       Message: {
         Subject: {

@@ -70,16 +70,10 @@
     border-color: #2d5016;
   }
 
-  .form-group input:invalid:not(:focus):not(:placeholder-shown),
-  .form-group textarea:invalid:not(:focus):not(:placeholder-shown),
+  /* Only show error border when .error class is added (after blur validation) */
   .form-group input.error,
   .form-group textarea.error {
     border-color: #dc3545;
-  }
-
-  .form-group input:valid:not(:focus):not(:placeholder-shown),
-  .form-group textarea:valid:not(:focus):not(:placeholder-shown) {
-    border-color: #28a745;
   }
 
   .error-message {

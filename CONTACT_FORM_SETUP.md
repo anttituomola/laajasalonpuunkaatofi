@@ -42,13 +42,16 @@ Create a `.env` file in the project root:
 
 ```env
 ADMIN_EMAIL=anttituomola8@gmail.com
+CONTACT_RECIPIENT_EMAIL=your-recipient-email@example.com
 AWS_SDK_REGION=eu-north-1
 AWS_SDK_ACCESS_KEY_ID=your-access-key-id-here
 AWS_SDK_SECRET_ACCESS_KEY=your-secret-access-key-here
 ```
 
 **Important:** 
-- The `ADMIN_EMAIL` must be verified in AWS SES
+- The `ADMIN_EMAIL` must be verified in AWS SES (used as sender/From address)
+- `CONTACT_RECIPIENT_EMAIL` is the email address where contact form submissions will be sent (can be different from ADMIN_EMAIL)
+- If `CONTACT_RECIPIENT_EMAIL` is not set, it will default to `ADMIN_EMAIL`
 - Use the same region where you verified your email
 - Never commit `.env` to git (it's already in `.gitignore`)
 

@@ -24,7 +24,6 @@ const { title, image, imageAlt, description, link = '/ota-yhteytta' } = Astro.pr
   <div class="service-content">
     <h3>{title}</h3>
     {description && <p>{description}</p>}
-    <a href={link} class="btn-service">Ota yhteyttä</a>
   </div>
 </div>
 
@@ -66,23 +65,8 @@ const { title, image, imageAlt, description, link = '/ota-yhteytta' } = Astro.pr
 
   .service-content p {
     color: #666;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
     line-height: 1.6;
-  }
-
-  .btn-service {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    border: 2px solid #2d5016;
-    color: #2d5016;
-    border-radius: 4px;
-    font-weight: 600;
-    transition: background-color 0.3s, color 0.3s;
-  }
-
-  .btn-service:hover {
-    background: #2d5016;
-    color: white;
   }
 </style>
 

@@ -6,6 +6,18 @@ import Hero from '../components/Hero.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import ContactForm from '../components/ContactForm.astro';
 import ContactInfo from '../components/ContactInfo.astro';
+import { Image, getImage } from 'astro:assets';
+
+// Import images for optimization
+import pihapuidenKaadot from '../assets/images/pihapuiden-kaadot.jpg';
+import puidenHoitoleikkaukset from '../assets/images/puiden-hoitoleikkaukset.jpg';
+import puunkaadotSaaristossa from '../assets/images/puunkaadot-saaristossa.jpg';
+import kantojyrsinta from '../assets/images/kantojyrsinta.jpg';
+import villeKulmala from '../assets/images/ville-kulmala.jpg';
+import ctaBg from '../assets/images/cta-bg.jpg';
+
+// Get optimized CTA background image URL
+const optimizedCtaBg = await getImage({ src: ctaBg, width: 1920, quality: 80 });
 ---
 
 <BaseLayout
@@ -31,22 +43,22 @@ import ContactInfo from '../components/ContactInfo.astro';
         <div class="services-grid">
           <ServiceCard
             title="Pihapuiden kaadot Helsinki"
-            image="/images/pihapuiden-kaadot.jpg"
+            image={pihapuidenKaadot}
             imageAlt="Ammattitaitoinen pihapuiden kaato Helsingissä - Turvallinen puunkaato ahtaissa paikoissa"
           />
           <ServiceCard
             title="Puiden hoitoleikkaukset"
-            image="/images/puiden-hoitoleikkaukset.jpg"
+            image={puidenHoitoleikkaukset}
             imageAlt="Puiden hoitoleikkaus ja puunhoito palvelut - Ammattitaitoinen arboristi Helsinki"
           />
           <ServiceCard
             title="Puunkaadot saaristossa"
-            image="/images/puunkaadot-saaristossa.jpg"
+            image={puunkaadotSaaristossa}
             imageAlt="Puunkaato saaristossa ja saarilla - Erikoistunut puunkaatopalvelu Helsingin saaristoon"
           />
           <ServiceCard
             title="Kantojyrsintä Helsinki"
-            image="/images/kantojyrsinta.jpg"
+            image={kantojyrsinta}
             imageAlt="Kantojyrsintä ja kantojen poisto Helsingissä - Tehokas kantojen poisto palvelu"
           />
         </div>
@@ -107,7 +119,7 @@ import ContactInfo from '../components/ContactInfo.astro';
     </section>
 
     <!-- Free Consultation CTA -->
-    <section class="cta-section" aria-labelledby="cta-heading">
+    <section class="cta-section" aria-labelledby="cta-heading" style={`background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${optimizedCtaBg.src}')`}>
       <div class="container">
         <h2 id="cta-heading">Varaa ilmainen kartoitus puunkaatotyölle!</h2>
         <p>
@@ -132,13 +144,14 @@ import ContactInfo from '../components/ContactInfo.astro';
             <a href="/ota-yhteytta" class="btn btn-primary">Varaa ilmainen kartoitus</a>
           </div>
           <div class="about-image">
-            <img 
-              src="/images/ville-kulmala.jpg" 
+            <Image 
+              src={villeKulmala}
               alt="Ville Kulmala - Ammattitaitoinen arboristi ja puunkaatopalvelun yrittäjä Helsingissä" 
-              loading="lazy" 
-              decoding="async"
-              width="600"
-              height="800"
+              loading="lazy"
+              width={600}
+              height={800}
+              format="webp"
+              quality={80}
             />
             <div class="image-caption">
               <p class="caption-label">Yrittäjä</p>
@@ -295,8 +308,9 @@ import ContactInfo from '../components/ContactInfo.astro';
   /* CTA Section */
   .cta-section {
     padding: 5rem 0;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-      url('/images/cta-bg.jpg') center/cover;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: white;
     text-align: center;
   }

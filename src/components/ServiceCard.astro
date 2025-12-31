@@ -1,7 +1,9 @@
 ---
+import { Image, type ImageMetadata } from 'astro:assets';
+
 interface Props {
   title: string;
-  image: string;
+  image: ImageMetadata;
   imageAlt: string;
   description?: string;
   link?: string;
@@ -12,13 +14,15 @@ const { title, image, imageAlt, description, link = '/ota-yhteytta' } = Astro.pr
 
 <div class="service-card">
   <div class="service-image">
-    <img 
+    <Image 
       src={image} 
       alt={imageAlt} 
       loading="lazy" 
-      decoding="async"
-      width="400"
-      height="250"
+      width={400}
+      height={250}
+      sizes="(max-width: 640px) 100vw, (max-width: 968px) 50vw, 25vw"
+      format="webp"
+      quality={80}
     />
   </div>
   <div class="service-content">

@@ -28,4 +28,7 @@ pnpm-debug.log*
 # Astro
 .astro/
 
+# Vercel
+.vercel/output
+
 

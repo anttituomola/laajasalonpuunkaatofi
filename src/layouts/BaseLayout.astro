@@ -129,14 +129,6 @@ const finalStructuredData = structuredData || defaultStructuredData;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     
-    <!-- Performance: Preload critical resources -->
-    {Astro.url.pathname === '/' && (
-      <>
-        <link rel="preload" href="/images/hero-bg.jpg" as="image" fetchpriority="high" />
-        <link rel="preload" href="/images/pihapuiden-kaadot.jpg" as="image" />
-      </>
-    )}
-    
     <!-- DNS prefetch for external resources -->
     <link rel="dns-prefetch" href="https://www.facebook.com" />
     <link rel="dns-prefetch" href="https://www.instagram.com" />

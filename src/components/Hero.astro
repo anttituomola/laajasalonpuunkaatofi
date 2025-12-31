@@ -1,15 +1,30 @@
 ---
+import { Image, getImage } from 'astro:assets';
+import ctaBg from '../assets/images/cta-bg.jpg';
+
 interface Props {
   title: string;
   subtitle?: string;
   showButtons?: boolean;
-  backgroundImage?: string;
+  backgroundImage?: ImageMetadata;
 }
 
-const { title, subtitle, showButtons = true, backgroundImage = '/images/cta-bg.jpg' } = Astro.props;
+const { title, subtitle, showButtons = true, backgroundImage = ctaBg } = Astro.props;
+
+// Get optimized image URL for background
+const optimizedImage = await getImage({ src: backgroundImage, width: 1920, quality: 80 });
 ---
 
-<section class="hero" role="banner" aria-label="Hero section" style={`--hero-bg-image: url('${backgroundImage}')`}>
+<section class="hero" role="banner" aria-label="Hero section">
+  <img 
+    src={optimizedImage.src}
+    alt=""
+    aria-hidden="true"
+    class="hero-bg-image"
+    fetchpriority="high"
+    loading="eager"
+    decoding="sync"
+  />
   <div class="hero-overlay" aria-hidden="true"></div>
   <div class="hero-content">
     <h1>{title}</h1>
@@ -30,15 +45,20 @@ const { title, subtitle, showButtons = true, backgroundImage = '/images/cta-bg.j
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-      var(--hero-bg-image, url('/images/cta-bg.jpg')) center/cover;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     color: white;
     text-align: center;
     padding: 4rem 2rem;
-    will-change: transform;
+    overflow: hidden;
+  }
+
+  .hero-bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
   }
 
   .hero-overlay {
@@ -47,7 +67,8 @@ const { title, subtitle, showButtons = true, backgroundImage = '/images/cta-bg.j
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.3);
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+    z-index: 1;
   }
 
   .hero-content {

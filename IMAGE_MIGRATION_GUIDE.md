@@ -91,3 +91,4 @@ Copy only `pihapuiden-kaadot.jpg` to `public/images/`
 - If images look wrong, we can adjust the CSS
 
 
+

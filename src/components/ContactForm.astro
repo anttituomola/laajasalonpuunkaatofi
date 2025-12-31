@@ -26,6 +26,12 @@
     <span class="error-message" id="message-error"></span>
   </div>
   
+  <!-- Honeypot field - hidden from users but visible to bots -->
+  <div class="honeypot-field" aria-hidden="true">
+    <label for="website">Website</label>
+    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+  </div>
+  
   <button type="submit" class="btn-submit">Lähetä</button>
 </form>
 
@@ -158,6 +164,17 @@
     background: #f8d7da;
     color: #721c24;
     border: 1px solid #f5c6cb;
+  }
+
+  /* Honeypot field - completely hidden from users */
+  .honeypot-field {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
   }
 
   @media (max-width: 768px) {
@@ -307,7 +324,9 @@
     }
 
     try {
-      const data = { name, phone, email, message };
+      // Include honeypot field in submission (should be empty for legitimate users)
+      const website = formData.get('website')?.toString().trim() || '';
+      const data = { name, phone, email, message, website };
       
       const response = await fetch('/api/contact', {
         method: 'POST',

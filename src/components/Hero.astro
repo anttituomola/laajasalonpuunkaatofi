@@ -1,5 +1,5 @@
 ---
-import { Image, getImage } from 'astro:assets';
+import { getImage } from 'astro:assets';
 import ctaBg from '../assets/images/cta-bg.jpg';
 
 interface Props {
@@ -11,13 +11,20 @@ interface Props {
 
 const { title, subtitle, showButtons = true, backgroundImage = ctaBg } = Astro.props;
 
-// Get optimized image URL for background
-const optimizedImage = await getImage({ src: backgroundImage, width: 1920, quality: 80 });
+// Get optimized image URLs for different screen sizes (mobile-first approach)
+const mobileImage = await getImage({ src: backgroundImage, width: 640, quality: 75, format: 'webp' });
+const tabletImage = await getImage({ src: backgroundImage, width: 1024, quality: 80, format: 'webp' });
+const desktopImage = await getImage({ src: backgroundImage, width: 1920, quality: 80, format: 'webp' });
+
+// Create srcset for responsive images
+const srcset = `${mobileImage.src} 640w, ${tabletImage.src} 1024w, ${desktopImage.src} 1920w`;
 ---
 
 <section class="hero" role="banner" aria-label="Hero section">
   <img 
-    src={optimizedImage.src}
+    src={mobileImage.src}
+    srcset={srcset}
+    sizes="100vw"
     alt=""
     aria-hidden="true"
     class="hero-bg-image"

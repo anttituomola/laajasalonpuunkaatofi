@@ -20,9 +20,10 @@ const { title, image, imageAlt, description, link = '/ota-yhteytta' } = Astro.pr
       loading="lazy" 
       width={400}
       height={250}
+      widths={[400, 800, 1200]}
       sizes="(max-width: 640px) 100vw, (max-width: 968px) 50vw, 25vw"
       format="webp"
-      quality={80}
+      quality={75}
     />
   </div>
   <div class="service-content">

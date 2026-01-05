@@ -1,0 +1,42 @@
+{
+  "redirects": [
+    {
+      "source": "/privacy-policy",
+      "destination": "/rekisteri-ja-tietosuojaseloste",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy/",
+      "destination": "/rekisteri-ja-tietosuojaseloste",
+      "permanent": true
+    },
+    {
+      "source": "/palvelumme",
+      "destination": "/palvelut",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.laajasalonpuunkaato.fi"
+        }
+      ],
+      "destination": "https://laajasalonpuunkaato.fi/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "query",
+          "key": "page_id"
+        }
+      ],
+      "destination": "/",
+      "permanent": true
+    }
+  ]
+}
+

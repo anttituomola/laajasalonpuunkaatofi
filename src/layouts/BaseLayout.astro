@@ -9,12 +9,16 @@ interface Props {
 }
 
 const { title, description, canonicalURL, keywords, ogImage, structuredData } = Astro.props;
-const siteURL = Astro.site || 'https://laajasalonpuunkaato.fi';
+// Always use the preferred canonical domain (non-www, HTTPS)
+const siteURL = 'https://laajasalonpuunkaato.fi';
 const fullTitle = title === 'Etusivu' 
   ? 'Puunkaato Laajasalo & Helsinki | Laajasalon Puunkaatopalvelu - Turvallinen puunkaato Uudellamaalla' 
   : `${title} | Laajasalon Puunkaatopalvelu`;
+// Use pathname to exclude query parameters (like ?page_id=16 from old WordPress URLs)
 const url = canonicalURL || Astro.url.pathname;
-const fullURL = new URL(url, siteURL).toString();
+// Ensure canonical URL always uses preferred domain (non-www, HTTPS) and no query params
+const canonicalPath = url.startsWith('/') ? url : `/${url}`;
+const fullURL = new URL(canonicalPath, siteURL).toString();
 const defaultKeywords = 'puunkaato, puunkaatopalvelu, puunkaato Laajasalo, puunkaato Helsinki, puunkaato Uusimaa, pihapuiden kaato, hoitoleikkaus, puunhoito, kantojyrsintä, arboristi Helsinki, arboristi Laajasalo, puunkaato saaristossa, vaativa puunkaato, turvallinen puunkaato, tree removal Helsinki, arborist Helsinki';
 const metaKeywords = keywords || defaultKeywords;
 // Use landscape image for better WhatsApp compatibility (recommended: 1200×630px, aspect ratio 1.91:1)
